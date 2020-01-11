@@ -46,14 +46,16 @@ class PokemonDetail extends StatelessWidget {
                 .toList(),
               ),
               Text("Next Evolution"),
-              Row( //list
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly, //space among types
-                children: pokemon.nextEvolution.map((n) => FilterChip(
-                  backgroundColor: Colors.green,
-                  label: Text(n.name, style: TextStyle(color: Colors.white),),
-                  onSelected: (b){}))
-                .toList(),
-              ),
+              pokemon.nextEvolution == null?
+                Text("No next evolution")
+              : Row( //list
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly, //space among types
+                  children: pokemon.nextEvolution.map((n) => FilterChip(
+                    backgroundColor: Colors.green,
+                    label: Text(n.name, style: TextStyle(color: Colors.white),),
+                    onSelected: (b){}))
+                    .toList(),
+              )
             ],
           ),
         ),
