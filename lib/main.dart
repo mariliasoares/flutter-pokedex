@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 void main() =>
  runApp(MaterialApp(
-   title: "Po",
+   title: "Pokedex",
    home: LandingPage(),
    debugShowCheckedModeBanner: false,
 ));

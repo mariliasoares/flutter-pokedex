@@ -34,7 +34,7 @@ class _LandingPageState extends State<LandingPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold( //scaffold: to create pages
       appBar: AppBar(
         title: Text("Pokedex"),
         backgroundColor: Colors.cyan,
@@ -54,20 +54,23 @@ class _LandingPageState extends State<LandingPage> {
                 pokemon: poke,
               )));
             },
-            child: Card(
-              elevation: 3.0,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly, //figura e texto
-                children: <Widget>[
-                  Container(
-                    height: 100.0,
-                    width: 100.0,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(image: NetworkImage(poke.img))),
-                  ),
-                  Text(poke.name, style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                  )
-                ],
+            child: Hero(
+              tag: poke.img,
+              child: Card(
+                elevation: 3.0,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly, //figura e texto
+                  children: <Widget>[
+                    Container(
+                      height: 100.0,
+                      width: 100.0,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(image: NetworkImage(poke.img))),
+                    ),
+                    Text(poke.name, style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                    )
+                  ],
+                ),
               ),
             ),
           ),
