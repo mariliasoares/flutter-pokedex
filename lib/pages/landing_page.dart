@@ -13,6 +13,9 @@ class LandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<LandingPage> {
 
+  Icon searchIcon = Icon(Icons.search, color: Colors.white,size: 30.0,);
+  Widget searchBar = Text("Pokedex");
+
   var url = "https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json";
 
   Pokedex pokedex;
@@ -36,8 +39,39 @@ class _LandingPageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     return Scaffold( //scaffold: to create pages
       appBar: AppBar(
-        title: Text("Pokedex"),
+//        leading: IconButton(
+//            icon: Icon(Icons.menu),
+//            onPressed: (){},
+//        ),
         backgroundColor: Colors.cyan,
+
+        actions: <Widget>[
+          IconButton(
+            icon: searchIcon,
+            onPressed: () {
+               setState(() {
+                 if(this.searchIcon.icon == Icons.search) {
+                   this.searchIcon = Icon(Icons.cancel);
+                   this.searchBar = TextField(
+                     textInputAction: TextInputAction.go,
+                     decoration: InputDecoration(
+                       hintText: "Search Pokemon",
+                       hintStyle: TextStyle(color: Colors.white),
+                     ),
+                     style: TextStyle(
+                       color: Colors.white,
+                       fontSize: 18.0,
+                     ),
+                   );
+                 } else {
+                   this.searchIcon = Icon(Icons.search, color: Colors.white,size: 30.0,);
+                   this.searchBar = Text("Pokedex");
+                 }
+               });
+            }
+          ),
+        ],
+        title: searchBar,
       ),
 
       body: pokedex == null?

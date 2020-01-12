@@ -11,14 +11,13 @@ class PokemonDetail extends StatelessWidget {
 
   bodyWidget(BuildContext context) => Stack( //do some stacking on the top of it
     children: <Widget>[
-      Positioned(
-        height: MediaQuery.of(context).size.height/1.5, //a posição do background
-        width: MediaQuery.of(context).size.width - 20,
-        left: 10.0,
-        top: MediaQuery.of(context).size.height * 0.1,
+      Positioned.fill(
+//        height: MediaQuery.of(context).size.height/1.5, //a posição do background
+//        width: MediaQuery.of(context).size.width,
+        top: MediaQuery.of(context).size.height * 0.23,
         child: Card(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
+            borderRadius: BorderRadius.circular(40.0),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -83,8 +82,17 @@ class PokemonDetail extends StatelessWidget {
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.cyan,
-        title:
-          Text(pokemon.name, style: TextStyle(color: Colors.white)),
+//        title:
+//          Text(pokemon.name, style: TextStyle(color: Colors.white)),
+        actions: <Widget>[
+          IconButton(icon: Icon(
+              Icons.favorite,
+              color: Colors.pinkAccent,
+              size: 30.0,
+          ), onPressed: () {
+            //
+          }),
+        ],
       ),
 
       body: bodyWidget(context),
