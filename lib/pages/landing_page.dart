@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:pokedex/pages/pokemon_detail.dart';
-import 'package:pokedex/pokemon.dart';
+import 'package:pokedex/models/pokemon.dart';
 
 //stless + ENTER
 class LandingPage extends StatefulWidget {
@@ -20,6 +20,8 @@ class _LandingPageState extends State<LandingPage> {
 
   Pokedex pokedex;
 
+  List<Pokemon> _search = [];
+
   @override
   void initState() {
     super.initState();
@@ -32,6 +34,23 @@ class _LandingPageState extends State<LandingPage> {
     pokedex = Pokedex.fromJson(decodedJson);
 
     //when using stateful widgets/to perform some data changes
+    setState(() {});
+  }
+
+  TextEditingController controller = new TextEditingController();
+
+  onSearch(String text) async {
+    _search.clear();
+    if(text.isEmpty) {
+      setState(() {});
+      return;
+    }
+    pokedex.pokemon.forEach((p) {
+      if(p.name.contains(text) || p.num.contains(text)) {
+        this._search.add(p);
+      }
+    });
+
     setState(() {});
   }
 
@@ -55,9 +74,16 @@ class _LandingPageState extends State<LandingPage> {
                    this.searchBar = TextField(
                      textInputAction: TextInputAction.go,
                      decoration: InputDecoration(
-                       hintText: "Search Pokemon",
+                       hintText: "Search Pokemon...",
                        hintStyle: TextStyle(color: Colors.white),
                      ),
+                     onChanged: onSearch,
+//                         (text) {
+//                       text = text.toLowerCase();
+//                       setState(() { //we're going to change the state of our widget
+//
+//                       });
+//                     },
                      style: TextStyle(
                        color: Colors.white,
                        fontSize: 18.0,
@@ -76,7 +102,8 @@ class _LandingPageState extends State<LandingPage> {
 
       body: pokedex == null?
       Center(
-        child: CircularProgressIndicator(),)
+        child: CircularProgressIndicator(),
+      )
       : GridView.count(
         crossAxisCount: 2,
         children: pokedex.pokemon.map((poke) => Padding(
@@ -99,10 +126,14 @@ class _LandingPageState extends State<LandingPage> {
                       height: 100.0,
                       width: 100.0,
                       decoration: BoxDecoration(
-                        image: DecorationImage(image: NetworkImage(poke.img))),
+                        image: DecorationImage(image: NetworkImage(poke.img))
+                      ),
                     ),
-                    Text(poke.name, style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                    )
+                    Text(poke.name, style: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold),
+                    ),
+                    Text(poke.num),
                   ],
                 ),
               ),
