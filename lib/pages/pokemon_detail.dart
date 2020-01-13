@@ -31,6 +31,8 @@ class PokemonDetail extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
+              Text("Height: ${pokemon.height}", style: TextStyle(fontSize:16.0, fontWeight: FontWeight.bold)),
+              Text("Weight: ${pokemon.weight}", style: TextStyle(fontSize:16.0, fontWeight: FontWeight.bold)),
               Text("Types", style: TextStyle(fontSize:20.0, fontWeight: FontWeight.bold)),
               Row( //list
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly, //space among types
