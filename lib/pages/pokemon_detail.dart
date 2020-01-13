@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:pokedex/models/pokemon.dart';
 
 class PokemonDetail extends StatelessWidget {
@@ -22,7 +23,7 @@ class PokemonDetail extends StatelessWidget {
       Positioned.fill(
 //        height: MediaQuery.of(context).size.height/1.5, //a posição do background
 //        width: MediaQuery.of(context).size.width,
-        top: MediaQuery.of(context).size.height * 0.33,
+        top: MediaQuery.of(context).size.height * 0.39,
         child: Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(35.0),
@@ -30,33 +31,40 @@ class PokemonDetail extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              SizedBox(height: 40.0,),
-              Text("Height: ${pokemon.height}"),
-              Text("Weight: ${pokemon.weight}"),
+              Row( //list
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly, //space among types
+                children: pokemon.type.map((text) => FilterChip(
+                    backgroundColor: Colors.cyan,
+
+                    label: Text(text),
+                    labelStyle: TextStyle(fontSize:16.0, fontWeight: FontWeight.bold, color: Colors.white),
+                    onSelected: (b){}))
+                    .toList(),
+              ),
               Text("Types", style: TextStyle(fontSize:20.0, fontWeight: FontWeight.bold)),
               Row( //list
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly, //space among types
                 children: pokemon.type.map((text) => FilterChip(
-                  backgroundColor: Colors.amber,
-                  label: Text(text),
-                  onSelected: (b){}))
-                .toList(),
+                    backgroundColor: Colors.amber,
+                    label: Text(text),
+                    onSelected: (b){}))
+                    .toList(),
               ),
-              Text("Weakness"),
+              Text("Weakness", style: TextStyle(fontSize:20.0, fontWeight: FontWeight.bold)),
               Row( //list
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: pokemon.weaknesses.map((text) => FilterChip(
-                  backgroundColor: Colors.red,
-                  label: Text(text, style: TextStyle(color: Colors.white),),
-                  onSelected: (b){}))
-                .toList(),
+                    backgroundColor: Colors.red,
+                    label: Text(text, style: TextStyle(color: Colors.white),),
+                    onSelected: (b){}))
+                    .toList(),
               ),
-              Text("Next Evolution"),
+              Text("Next Evolution", style: TextStyle(fontSize:20.0, fontWeight: FontWeight.bold)),
               pokemon.nextEvolution == null?
-                Text("No next evolution")
-              : Row( //list
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly, //space among types
-                  children: pokemon.nextEvolution.map((n) => FilterChip(
+              Text("No next evolution")
+                  : Row( //list
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly, //space among types
+                children: pokemon.nextEvolution.map((n) => FilterChip(
                     backgroundColor: Colors.green,
                     label: Text(n.name, style: TextStyle(color: Colors.white),),
                     onSelected: (b){}))
