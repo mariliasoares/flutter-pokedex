@@ -1,17 +1,17 @@
-# pokedex
+# Pokemon Searcher App
 
-A new Flutter application.
+  Um aplicativo para consulta de pokemon utilizando a API https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json e desenvolvido em Flutter
 
-## Getting Started
+## Config
 
-This project is a starting point for a Flutter application.
+    Tecnologias necessarias:
+    * Flutter
+    * Android toolchain
+    * Android Studio
+    * Connected device
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# flutter-pokedex
+## Run Project
+    
+    # flutter emulators --launch emulator
+    # flutter run
