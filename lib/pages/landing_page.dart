@@ -13,7 +13,7 @@ class LandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<LandingPage> {
 
-  Icon searchIcon = Icon(Icons.search, color: Colors.white,size: 30.0,);
+  Icon searchIcon = Icon(Icons.search, color: Colors.white, size: 30.0,);
   Widget searchBar = Text("Pokedex");
   var hideSearch = true;
 
@@ -46,7 +46,10 @@ class _LandingPageState extends State<LandingPage> {
       setState(() {});
       return;
     }
+
     pokedex.pokemon.forEach((p) {
+      var upperName = p.name;
+
       if(p.name.contains(text) || p.num.contains(text)) {
         this._search.add(p);
       }
