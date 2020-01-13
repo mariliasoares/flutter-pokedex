@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:pokedex/pages/pokemon_detail.dart';
 import 'package:pokedex/models/pokemon.dart';
+import 'package:pokedex/pages/about.dart';
 
 //stless + ENTER
 class LandingPage extends StatefulWidget {
@@ -86,6 +87,7 @@ class _LandingPageState extends State<LandingPage> {
                    onPressed: (){
                      controller.clear();
                      onSearch('');
+                     FocusScope.of(context).requestFocus(FocusNode());
                    },
                    icon: Icon(Icons.cancel),
                  ),
@@ -148,12 +150,41 @@ class _LandingPageState extends State<LandingPage> {
         ),
 
       ),
-      drawer: Drawer(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: Colors.cyan,
-        child: Icon(Icons.refresh),
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+          new UserAccountsDrawerHeader(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(colors: <Color>[
+                  Colors.cyan,
+                  Colors.cyan,
+                ])
+            ),
+            accountName: Text("Marilia Soares", style: TextStyle(fontSize:18.0, fontWeight: FontWeight.bold, color: Colors.black45)),
+            accountEmail: Text("marisoares1202@gmail.com", style: TextStyle(fontSize:14.0, fontWeight: FontWeight.bold, color: Colors.black45)),
+            currentAccountPicture: CircleAvatar(
+              backgroundColor: Colors.greenAccent,
+//              backgroundImage: NetworkImage(pok2.img),
+              radius: 35.0,
+              child: new Text("M", style: TextStyle(fontSize:18.0, fontWeight: FontWeight.bold, color: Colors.black45)),
+            ),
+          ),
+            ListTile(
+              title: Text("Favorites"),
+              onTap: (){},
+            ),
+            new Divider(),
+            ListTile(
+              title: Text("Sobre mim"),
+              onTap: (){
+                  //navigator takes context(basically the location of the widget) and router(way)
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => About()));
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
 }
+
