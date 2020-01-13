@@ -87,6 +87,7 @@ class _LandingPageState extends State<LandingPage> {
                    onPressed: (){
                      controller.clear();
                      onSearch('');
+                     FocusScope.of(context).requestFocus(FocusNode());
                    },
                    icon: Icon(Icons.cancel),
                  ),
