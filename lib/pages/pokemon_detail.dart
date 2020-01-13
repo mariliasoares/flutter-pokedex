@@ -31,22 +31,13 @@ class PokemonDetail extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Row( //list
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly, //space among types
-                children: pokemon.type.map((text) => FilterChip(
-                    backgroundColor: Colors.cyan,
-
-                    label: Text(text),
-                    labelStyle: TextStyle(fontSize:16.0, fontWeight: FontWeight.bold, color: Colors.white),
-                    onSelected: (b){}))
-                    .toList(),
-              ),
               Text("Types", style: TextStyle(fontSize:20.0, fontWeight: FontWeight.bold)),
               Row( //list
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly, //space among types
                 children: pokemon.type.map((text) => FilterChip(
                     backgroundColor: Colors.amber,
                     label: Text(text),
+                    labelStyle: TextStyle(fontSize:16.0, fontWeight: FontWeight.bold, color: Colors.white),
                     onSelected: (b){}))
                     .toList(),
               ),
@@ -56,6 +47,7 @@ class PokemonDetail extends StatelessWidget {
                 children: pokemon.weaknesses.map((text) => FilterChip(
                     backgroundColor: Colors.red,
                     label: Text(text, style: TextStyle(color: Colors.white),),
+                    labelStyle: TextStyle(fontSize:16.0, fontWeight: FontWeight.bold, color: Colors.white),
                     onSelected: (b){}))
                     .toList(),
               ),
@@ -65,10 +57,11 @@ class PokemonDetail extends StatelessWidget {
                   : Row( //list
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly, //space among types
                 children: pokemon.nextEvolution.map((n) => FilterChip(
-                    backgroundColor: Colors.green,
-                    label: Text(n.name, style: TextStyle(color: Colors.white),),
-                    onSelected: (b){}))
-                    .toList(),
+                  backgroundColor: Colors.green,
+                  label: Text(n.name, style: TextStyle(color: Colors.white),),
+                  labelStyle: TextStyle(fontSize:16.0, fontWeight: FontWeight.bold, color: Colors.white),
+                  onSelected: (b){}))
+                  .toList(),
               )
             ],
           ),
