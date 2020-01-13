@@ -11,19 +11,26 @@ class PokemonDetail extends StatelessWidget {
 
   bodyWidget(BuildContext context) => Stack( //do some stacking on the top of it
     children: <Widget>[
+      Container(
+        padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0,),
+        alignment: Alignment.topLeft,
+        child: Text(
+          pokemon.name,
+          style: TextStyle(fontSize:30.0, fontWeight: FontWeight.bold, color: Colors.white),
+        ),
+      ),
       Positioned.fill(
 //        height: MediaQuery.of(context).size.height/1.5, //a posição do background
 //        width: MediaQuery.of(context).size.width,
-        top: MediaQuery.of(context).size.height * 0.23,
+        top: MediaQuery.of(context).size.height * 0.33,
         child: Card(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(40.0),
+            borderRadius: BorderRadius.circular(35.0),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              SizedBox(height: 90.0,),
-              Text(pokemon.name, style: TextStyle(fontSize:20.0, fontWeight: FontWeight.bold),),
+              SizedBox(height: 40.0,),
               Text("Height: ${pokemon.height}"),
               Text("Weight: ${pokemon.weight}"),
               Text("Types", style: TextStyle(fontSize:20.0, fontWeight: FontWeight.bold)),
@@ -61,9 +68,9 @@ class PokemonDetail extends StatelessWidget {
       ),
       //on the top of positioned
       Align(
-        alignment: Alignment.topCenter,
+        alignment: Alignment(0.0, -0.70),
         child: Hero(tag: pokemon.img, child: Container(
-          height: 200.0,
+          height: 250.0,
           width: 200.0,
           decoration: BoxDecoration(
             image: DecorationImage(
