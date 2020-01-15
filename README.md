@@ -1,4 +1,4 @@
-# Pokemon Searcher App
+# Pokemon Search App
 
   Um aplicativo para consulta de pokemon utilizando a API https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json e desenvolvido em Flutter
 
